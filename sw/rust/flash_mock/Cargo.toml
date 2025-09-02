@@ -1,0 +1,13 @@
+[package]
+name = "flash_mock"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+anyhow = "1"
+flash_core = { path = "../flash_core" }
+
+[lib]
+name = "flash_mock"
+path = "src/lib.rs"
+

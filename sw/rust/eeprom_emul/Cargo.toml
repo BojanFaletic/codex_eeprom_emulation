@@ -1,0 +1,22 @@
+[package]
+name = "eeprom_emul"
+version = "0.1.0"
+edition = "2021"
+
+[features]
+default = ["mock"]
+mock = ["flash_mock"]
+ffi = ["flash_ll"]
+
+[dependencies]
+anyhow = "1"
+flash_core = { path = "../flash_core" }
+flash_mock = { path = "../flash_mock", optional = true }
+flash_ll = { path = "../flash_ll", optional = true }
+
+[dev-dependencies]
+rand = "0.8"
+
+[lib]
+name = "eeprom_emul"
+path = "src/lib.rs"

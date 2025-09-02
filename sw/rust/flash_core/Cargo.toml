@@ -1,0 +1,11 @@
+[package]
+name = "flash_core"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+name = "flash_core"
+path = "src/lib.rs"
+
+[dependencies]
+anyhow = "1"

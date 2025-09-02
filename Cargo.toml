@@ -1,0 +1,14 @@
+[workspace]
+members = [
+    "sw/rust/flash_ll_sys",
+    "sw/rust/flash_ll",
+    "sw/rust/eeprom_emul",
+    "sw/rust/flash_core",
+    "sw/rust/flash_mock",
+]
+resolver = "2"
+default-members = [
+    "sw/rust/flash_core",
+    "sw/rust/flash_mock",
+    "sw/rust/eeprom_emul",
+]

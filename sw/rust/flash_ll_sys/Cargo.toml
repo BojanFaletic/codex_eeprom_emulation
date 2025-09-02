@@ -1,0 +1,17 @@
+[package]
+name = "flash_ll_sys"
+version = "0.1.0"
+edition = "2021"
+
+[features]
+default = ["sim"]
+sim = []
+
+[build-dependencies]
+cc = "1"
+bindgen = "0.69"
+
+[lib]
+name = "flash_ll_sys"
+path = "src/lib.rs"
+

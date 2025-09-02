@@ -1,0 +1,17 @@
+[package]
+name = "flash_ll"
+version = "0.1.0"
+edition = "2021"
+
+[features]
+default = ["sim"]
+sim = ["flash_ll_sys/sim"]
+
+[dependencies]
+flash_ll_sys = { path = "../flash_ll_sys" }
+flash_core = { path = "../flash_core" }
+anyhow = "1"
+
+[lib]
+name = "flash_ll"
+path = "src/lib.rs"

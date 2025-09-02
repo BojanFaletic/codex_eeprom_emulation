@@ -1,0 +1,12 @@
+[alias]
+# Pure-Rust EEPROM tests (no C/LLVM)
+eeprom-mock = "test -p eeprom_emul --no-default-features --features mock"
+
+# EEPROM tests using C-backed driver (requires LLVM/bindgen)
+eeprom-ffi = "test -p eeprom_emul --no-default-features --features ffi"
+
+# Quick FFI layer build/tests
+ffi-all = "test -p flash_ll_sys -p flash_ll"
+
+# Run the standalone app (mock EEPROM)
+eeprom-demo = "run --manifest-path app/Cargo.toml --"
