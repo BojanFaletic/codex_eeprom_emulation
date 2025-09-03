@@ -1,0 +1,16 @@
+[package]
+name = "eeprom_demo"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+anyhow = "1"
+clap = { version = "4", features = ["derive"] }
+hex = "0.4"
+rustyline = "17"
+eeprom_emul = { path = "../sw/rust/eeprom_emul" }
+flash_core = { path = "../sw/rust/flash_core" }
+
+[[bin]]
+name = "eeprom_demo"
+path = "src/main.rs"

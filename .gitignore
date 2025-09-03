@@ -1,4 +1,5 @@
 /target
 build
 .vscode
-.vdc
+.vcd
+.lock

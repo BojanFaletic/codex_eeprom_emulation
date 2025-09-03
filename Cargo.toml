@@ -5,6 +5,7 @@ members = [
     "sw/rust/eeprom_emul",
     "sw/rust/flash_core",
     "sw/rust/flash_mock",
+    "app"
 ]
 resolver = "2"
 default-members = [

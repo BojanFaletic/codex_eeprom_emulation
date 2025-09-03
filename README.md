@@ -3,6 +3,7 @@ Project Overview
 - HDL: Behavioral SPI NOR flash model in VHDL with a self‑checking GHDL testbench. See `hdl/README.md` for commands and coverage.
 - C: Low‑level SPI NOR flash driver + pure‑C simulator (AXI‑Lite style register block + flash model). Driver and model have unit tests. See `sw/flash_ll/README.md`.
 - Rust: Workspace with FFI bindings (`flash_ll_sys`), a safe wrapper (`flash_ll`), and an EEPROM emulation layer (`eeprom_emul`) validated against the C simulator.
+- App: Standalone CLI that exercises the EEPROM emulation using a built‑in mock flash; no hardware required.
 
 Repository Layout
 - `hdl/`: VHDL model and testbench; `run_ghdl.bat` to simulate.
@@ -12,7 +13,7 @@ Repository Layout
 - `sw/rust/flash_ll_sys/`: Rust FFI bindings (bindgen + cc) to the C driver and simulator.
 - `sw/rust/flash_ll/`: Safe Rust wrapper over the C driver, with sim‑backed tests.
 - `sw/rust/eeprom_emul/`: EEPROM emulation generic over `Flash` (mock by default, C driver optional).
- - `app/`: Standalone CLI that uses a built-in mock EEPROM to store settings and a boot counter.
+ - `app/`: EEPROM demo CLI using a mock EEPROM for settings and a boot counter (see `app/README.md`).
 
 Build Instructions
 - HDL: `hdl\run_ghdl.bat` (Windows). Generates `hdl\waves.vcd`.
@@ -32,6 +33,17 @@ Build Instructions
   - `cargo test -p flash_ll_sys`
   - `cargo test -p flash_ll`
   - `cargo test -p eeprom_emul`
+
+Demo App
+- Run with alias: `cargo eeprom-demo -- <cmd>`
+- Examples:
+  - `cargo eeprom-demo -- info`
+  - `cargo eeprom-demo -- boot --inc`
+  - `cargo eeprom-demo -- kv set name "Board A"`
+  - `cargo eeprom-demo -- kv get name`
+  - `cargo eeprom-demo -- write 0x40 --str "hello"`
+  - `cargo eeprom-demo -- dump 0 64`
+  - `cargo eeprom-demo -- repl`
 
 Cargo Aliases
 - `cargo eeprom-mock`: runs EEPROM tests with the pure‑Rust mock backend (no C/LLVM).
